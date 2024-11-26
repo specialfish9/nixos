@@ -113,6 +113,9 @@
 	pkgs.nerdfonts
 	pulseaudio
 	brightnessctl
+	neovim
+	git
+	wl-clipboard
   ];
 
   fonts.packages = with pkgs; [

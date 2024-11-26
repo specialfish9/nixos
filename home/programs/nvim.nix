@@ -14,7 +14,8 @@ in
     ".local/share/nvim/site/pack/paks/start/visimp".source = pkgs.fetchFromGitHub {
       owner = "visimp";
       repo = "visimp";
-      rev = "4702fa0ebe047735651c62fc7f0ea8d9ae1ab757"; # "v0.6.0";
+
+      rev = "36995d2a7969b03c5688a10940201e1b3f3fcfcf"; # "v0.6.0";
       sha256 = "sha256-54/iagkJ1Bs8NuEMmvmnSjL7IfVQzlSAhCnZmYciukg="; # lib.fakeSha256;
     };
   };
@@ -81,7 +82,7 @@ require'visimp'{
     foldmethod = 'marker'
   },
   languages = {
-   'c', 'python', 'latex', 'java', 'go', 'javascript', 'vue', 'ocaml', 'dart', 'typst', 'gleam'
+   'c', 'python', 'latex', 'java', 'go', 'typst'
   },
   python = {
     lsp = 'pyright' -- Avoid installing pyright, use the system's default
@@ -162,6 +163,6 @@ vim.cmd('command! Wq wq')
 vim.cmd('command! WQ wq')
 vim.cmd('command! W w')
 vim.cmd('command! Q q')
-    '';
+      '';
   };
 }
