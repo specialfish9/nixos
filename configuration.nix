@@ -116,6 +116,8 @@
 	neovim
 	git
 	wl-clipboard
+	unzip
+	python3
   ];
 
   fonts.packages = with pkgs; [

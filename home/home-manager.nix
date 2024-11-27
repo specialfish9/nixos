@@ -7,6 +7,7 @@
 }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 {
   imports = [
@@ -16,13 +17,21 @@ in
   home-manager.users.mattia = {
     home.stateVersion = "24.05";
 
-    home.packages = [
-	pkgs.swaybg
-	pkgs.dunst
-    	pkgs.xdg-user-dirs
-    	pkgs.grim
-    	pkgs.slurp
-    	pkgs.libnotify
+    home.packages = with pkgs; [
+	swaybg
+	dunst
+    	xdg-user-dirs
+    	grim
+    	slurp
+    	libnotify
+	alacritty
+
+	unstable.typst
+
+	(pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      		# select Python packages here
+		pwntools
+    	]))
     ];
 
     programs.bash = {
@@ -44,6 +53,8 @@ in
     	./desktop/wofi.nix
 
     	./programs/nvim.nix
+    	./programs/tmux.nix
+
     	./scripts/scr.nix
     ];
   };
