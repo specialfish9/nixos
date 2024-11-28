@@ -24,7 +24,6 @@ in
     	grim
     	slurp
     	libnotify
-	alacritty
 
 	unstable.typst
 
@@ -51,6 +50,8 @@ in
     	./desktop/hyprland.nix
     	./desktop/waybar.nix
     	./desktop/wofi.nix
+    	./desktop/power-menu.nix
+    	./desktop/alacritty.nix
 
     	./programs/nvim.nix
     	./programs/tmux.nix

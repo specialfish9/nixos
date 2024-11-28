@@ -1,0 +1,19 @@
+[window]
+
+opacity = 0.9
+
+padding.x = 20
+padding.y = 20
+
+decorations = "Full"
+decorations_theme_variant = "Light" # "Dark"
+
+[font]
+
+normal.family = "FiraCode"
+bold.family = "FiraCode"
+italic.family = "FiraCode"
+bold_italic.family = "FiraCode"
+
+size = 13.0
+
