@@ -118,6 +118,8 @@
 	wl-clipboard
 	unzip
 	python3
+	htop
+	killall
   ];
 
   fonts.packages = with pkgs; [

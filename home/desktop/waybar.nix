@@ -12,7 +12,7 @@
 
     settings = [{
 	layer = "top";
-  	position = "right";
+  	position = "top";
 	modules-left = ["hyprland/workspaces"];
 	modules-right = ["tray"];
 	modules-center = [ "clock" "battery""network" "cpu" "temperature" "memory" "backlight" "pulseaudio"];
@@ -20,7 +20,7 @@
 	pulseaudio = {
 		tooltip = false;
 		scroll-step = 5;
-		format = "{icon}\n{volume}%";
+		format = "{icon} {volume}%";
 		format-muted = "{icon} {volume}%";
 		on-click ="pactl set-sink-mute @DEFAULT_SINK@ toggle";
 		format-icons = {
@@ -30,7 +30,7 @@
 
 	"hyprland/workspaces" = {
 		justify = "center";
-	    	format = "{name}\n{icon}";
+	    	format = "{name} {icon}";
 	    	on-click = "activate";
 	    	all-outputs = false;
 	    	format-icons = {
@@ -43,7 +43,7 @@
  	network = {
 		tooltip = true;
     		justify = "center";
-		format-wifi = "{icon}";
+		format-wifi = "{icon} {essid}";
     		tooltip-format-wifi = "{essid}";
 		format-ethernet = "ETH";
     		format-icons = [""];
@@ -52,7 +52,7 @@
 	backlight = {
     		justify = "center";
 		tooltip = true;
-		format = "\n{}%";
+		format = " {}%";
 		interval =1;
 	};
 
@@ -62,10 +62,10 @@
 		    critical = 15;
 		};
 		justify = "center";
-		format = "{icon}\n{capacity}%";
-		format-charging = "\n{capacity}%";
-		format-plugged = "\n{capacity}%";
-		format-alt = "{icon}\n{time}";
+		format = "{icon} {capacity}%";
+		format-charging = " {capacity}%";
+		format-plugged = " {capacity}%";
+		format-alt = "{icon} {time}";
 		format-icons = ["" ""  "" "" "" "" "" "" "" "" "" ""];
     };
 
@@ -77,12 +77,28 @@
     	clock = {
 	      	justify = "center";
 		format-alt = "{:%H:%M}";
-		format = "{:%H:%M\n%d\n%b}";
+		format = "{:%H:%M %d %b}";
+		tooltip = true;
+		tooltip-format = "<tt><small>{calendar}</small></tt>";
+		calendar = {
+			mode = "year";
+			mode-mon-col = 3;
+			weeks-pos = "right";
+			on-scroll = 1;
+			on-click-right = "mode";
+			format = {
+				months = "<span color='#ffead3'><b>{}</b></span>";
+				days = "<span color='#ecc6d9'><b>{}</b></span>";
+				weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+				weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+				today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+			};
+		};
 	};
 
 	cpu = {
 		interval = 15;
-		format = "{icon}\n{0}%";
+		format = "{icon} {0}%";
 		justify = "center";
 		format-icons = [""];
 	};
@@ -90,14 +106,14 @@
     	memory = {
 		justify = "center";
 		interval = 30;
-		format = "\n{}%";
+		format = " {}%";
     	};
 	
 	temperature = {    
 		justify = "center";
 		thermal-zone = 0;
 		critical-threshold = 80;
-		format = "\n{temperatureC}°C";
+		format = " {temperatureC}°C";
 	  };
 	}
 

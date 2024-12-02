@@ -33,6 +33,7 @@ in
       go
       tree-sitter
       nodejs
+      ripgrep
       pyright
     ];
 

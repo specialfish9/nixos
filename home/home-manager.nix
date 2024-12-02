@@ -14,22 +14,41 @@ in
     (import "${home-manager}/nixos")
   ];
 
-  home-manager.users.mattia = {
+home-manager.users.mattia = {
     home.stateVersion = "24.05";
+
+    home.sessionPath = [
+  	"$HOME/.local/bin"
+    ];
 
     home.packages = with pkgs; [
 	swaybg
+	eww
 	dunst
     	xdg-user-dirs
     	grim
     	slurp
     	libnotify
+	jq
 
+	spotify
+
+	calcure
+
+	xournalpp
+	(aspellWithDicts (dicts: with dicts; [
+      		en
+      		en-computers
+      		en-science
+    	]))
 	unstable.typst
+	jetbrains.idea-community
 
+	jdk
 	(pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
       		# select Python packages here
 		pwntools
+		pycryptodome
     	]))
     ];
 
@@ -46,6 +65,7 @@ in
 	userEmail = "mgiro2001@gmail.com";
     };
 
+
     imports = [
     	./desktop/hyprland.nix
     	./desktop/waybar.nix
@@ -57,6 +77,9 @@ in
     	./programs/tmux.nix
 
     	./scripts/scr.nix
+    	./scripts/impostazioni.nix
+    	./scripts/rebuild.nix
     ];
   };
+
 }

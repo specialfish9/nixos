@@ -1,18 +1,17 @@
 * {
 	border: none;
-  border-radius: 0;
-  font-family: " M+1NerdFont" ;
-  font-weight: bold;
-	font-size: 13px;
-	min-height: 10px;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  	border-radius: 0;
+  	font-family: " M+1NerdFont" ;
+  	font-weight: bold;
+	font-size: 14px;
+  	padding-top: 4px;
+  	padding-bottom: 4px;
+  	padding-left: 7px;
+  	padding-right: 7px;
 }
 
 window#waybar {
-	background: black;
+	background: transparent;
 }
 
 window#waybar.hidden {
@@ -32,7 +31,8 @@ window#waybar.hidden {
   margin:0px;
 	color: #161320;
   background: white;
-  border-radius: 7px;
+  border-radius: 20px;
+    box-shadow: 4px 4px 2px 1px #101010;
 }
 
 #workspaces button {
@@ -67,7 +67,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  border-radius: 0 0 7px 7px;
+  border-radius: 0 20px 20px 0px;
 	transition: none;
 	color: #161320;
   background: #bd93f9;
@@ -115,10 +115,10 @@ window#waybar.hidden {
 	background: #DDB6F2;
 }
 #clock {
-  border-radius: 7px 7px 0 0;
+  border-radius: 20px 0px 0 20;
 	transition: none;
 	color: #161320;
-	background: #EBa9B3;
+	background: #fe8483;
 	/*background: #1A1826;*/
 }
 
@@ -133,7 +133,6 @@ window#waybar.hidden {
 background: #B5E8E0;
 }
 #cpu {
-  font-size: 12px;
 	transition: none;
 	color: #161320;
   background: #BFF6C3;
