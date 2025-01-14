@@ -16,6 +16,7 @@
 	modules-left = ["hyprland/workspaces"];
 	modules-right = ["tray"];
 	modules-center = [ "clock" "battery""network" "cpu" "temperature" "memory" "backlight" "pulseaudio"];
+
 	
 	pulseaudio = {
 		tooltip = false;

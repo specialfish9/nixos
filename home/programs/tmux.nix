@@ -16,15 +16,15 @@ in
     extraConfig = ''
 
 # remap prefix from 'C-b' to 'M-a'
-unbind C-b
-set-option -g prefix M-a
-bind-key M-a send-prefix
-
-# switch panes using Alt-arrow without prefix
-bind -n M-h select-pane -L
-bind -n M-l select-pane -R
-bind -n M-k select-pane -U
-bind -n M-j select-pane -D
+# unbind C-b
+#set-option -g prefix C-a
+#bind-key C-a send-prefix
+#
+## switch panes using Alt-arrow without prefix
+#bind -n C-h select-pane -L
+#bind -n C-l select-pane -R
+#bind -n C-k select-pane -U
+#bind -n C-j select-pane -D
 
 # Enable mouse control (clickable windows, panes, resizable panes)
 # set -g mouse on

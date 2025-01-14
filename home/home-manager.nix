@@ -31,11 +31,19 @@ home-manager.users.mattia = {
     	libnotify
 	jq
 
+	gcc
+
 	spotify
+	tmate
+	obs-studio
 
 	calcure
+	inkscape
+	libreoffice-qt
+	steghide
 
 	xournalpp
+	nb
 	(aspellWithDicts (dicts: with dicts; [
       		en
       		en-computers
@@ -46,9 +54,12 @@ home-manager.users.mattia = {
 
 	jdk
 	(pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-      		# select Python packages here
 		pwntools
 		pycryptodome
+		caldav
+		bluepy
+		pyyaml
+		requests
     	]))
     ];
 

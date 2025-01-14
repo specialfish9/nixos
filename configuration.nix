@@ -17,6 +17,9 @@
   networking.hostName = "edgar"; 
   networking.networkmanager.enable = true;
 
+	hardware.bluetooth.enable = true;
+
+
 
   # Time & lang
   time.timeZone = "Europe/Rome";
@@ -106,6 +109,8 @@
 	NIXOS_OZONE_WL = "1";
   };
 
+  environment.localBinInPath = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -120,6 +125,7 @@
 	python3
 	htop
 	killall
+	wireguard-tools
   ];
 
   fonts.packages = with pkgs; [
@@ -153,5 +159,42 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  programs.steam = {
+	enable = true;
+  };
+
+  networking.firewall = {
+  	allowedUDPPorts = [ 51820 ];
+  };
+
+  #   networking.wireguard.interfaces = {
+  #   wg0 = {
+  #     ips = [ "192.168.0.202/24" ];
+  #     listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
+  #
+  #     privateKey = "OEOEyvvZs9TyudfhdP3mfhoH+PhxuPy1qhlYmyf9JGA=";
+  #
+  #     peers = [
+  #       # For a client configuration, one peer entry for the server will suffice.
+  #
+  #       {
+  #         # Public key of the server (not a file path).
+  #         publicKey = "NhbrFjdgPWtOFYR5jRbfeR4sZHEXur+8LVHYWHbgmTg=";
+  #
+  #         # Forward all the traffic via VPN.
+  #         allowedIPs = [ "192.168.0.0/24" "0.0.0.0/0" ];
+  #         # Or forward only particular subnets
+  #         #allowedIPs = [ "10.100.0.1" "91.108.12.0/22" ];
+  #
+  #         # Set this to the server IP and port.
+  #         endpoint = "bfb5k8v1ihc82y1a.myfritz.net:56008"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+  #
+  #         # Send keepalives every 25 seconds. Important to keep NAT tables alive.
+  #         persistentKeepalive = 25;
+  #       }
+  #     ];
+  #   };
+  # };
 
 }
