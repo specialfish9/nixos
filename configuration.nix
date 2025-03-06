@@ -10,8 +10,16 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+	grub = {
+	    device = "nodev";
+	    enable = true;
+	    useOSProber = true;
+	    efiSupport = true;
+	  };
+  	efi.canTouchEfiVariables = true;
+  };
+
 
   # Network
   networking.hostName = "edgar"; 
@@ -92,7 +100,7 @@
   users.users.mattia = {
     isNormalUser = true;
     description = "mattia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -163,6 +171,10 @@
   programs.steam = {
 	enable = true;
   };
+
+
+  virtualisation.docker.enable = true;
+
 
   networking.firewall = {
   	allowedUDPPorts = [ 51820 ];

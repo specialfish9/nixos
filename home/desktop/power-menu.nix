@@ -25,7 +25,7 @@ case $op in
                 systemctl --user start lock
                 ;;
         logout)
-                killall Hyprland
+                pkill Hyprland
                 ;;
 esac
 	'';
