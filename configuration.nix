@@ -24,8 +24,7 @@
   # Network
   networking.hostName = "edgar"; 
   networking.networkmanager.enable = true;
-
-	hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
 
 
 
@@ -48,12 +47,13 @@
 
   # GNOME
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+  		enable = true;
+		displayManager.gdm.enable = true;
+		desktopManager.gnome.enable = true;
+  };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.sessionPackages = [pkgs.sway];
 
   xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -167,6 +167,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  security.polkit.enable = true;
 
   programs.steam = {
 	enable = true;

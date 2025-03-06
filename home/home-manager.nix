@@ -62,6 +62,7 @@ in
     ];
 
     imports = [
+      ./desktop/sway.nix
       ./desktop/hyprland.nix
       ./desktop/waybar.nix
       ./desktop/wofi.nix
