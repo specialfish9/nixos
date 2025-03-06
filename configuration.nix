@@ -100,7 +100,7 @@
   users.users.mattia = {
     isNormalUser = true;
     description = "mattia";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "mattia" "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
