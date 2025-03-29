@@ -11,6 +11,5 @@
 		requests
 		dnspython
 		sympy
-    	])
-
+  ])
 )

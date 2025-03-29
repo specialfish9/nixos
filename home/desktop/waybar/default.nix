@@ -8,14 +8,13 @@
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
 
     settings = [{
-	layer = "top";
+	  layer = "top";
   	position = "top";
-	modules-left = ["hyprland/workspaces"];
-	modules-right = ["tray"];
-	modules-center = [ "clock" "battery""network" "cpu" "temperature" "memory" "backlight" "pulseaudio"];
+	  modules-left = ["sway/workspaces" "hyprland/workspaces"];
+	  modules-right = ["tray"];
+	  modules-center = [ "clock" "battery""network" "cpu" "temperature" "memory" "backlight" "pulseaudio"];
 
 	
 	pulseaudio = {
@@ -36,6 +35,20 @@
 	    	all-outputs = false;
 	    	format-icons = {
 	      		urgent = "";
+	      		focused = "";
+	      		active = "";
+	      		default = "";
+	    	};
+	};
+
+	"sway/workspaces" = {
+		justify = "center";
+	    	format = "{name} {icon}";
+	    	on-click = "activate";
+	    	all-outputs = false;
+	    	format-icons = {
+	      		urgent = "";
+	      		focused = "";
 	      		active = "";
 	      		default = "";
 	    	};

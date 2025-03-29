@@ -15,7 +15,7 @@ in
       owner = "visimp";
       repo = "visimp";
 
-      rev = "36995d2a7969b03c5688a10940201e1b3f3fcfcf"; # "v0.6.0";
+      rev = "596a96d26a62855117f2de559e5655ebb3b7edf0"; # "v0.7.0";
       sha256 = "sha256-54/iagkJ1Bs8NuEMmvmnSjL7IfVQzlSAhCnZmYciukg="; # lib.fakeSha256;
     };
   };

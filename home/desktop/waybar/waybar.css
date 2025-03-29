@@ -44,7 +44,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-	color: #ABE9B3;
+	color: #FF0000;
 }
 
 #workspaces button:hover {
@@ -115,7 +115,7 @@ window#waybar.hidden {
 	background: #DDB6F2;
 }
 #clock {
-  border-radius: 20px 0px 0 20;
+  border-radius: 20px 0px 0px 20px;
 	transition: none;
 	color: #161320;
 	background: #fe8483;

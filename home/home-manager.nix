@@ -35,17 +35,19 @@ in
       unstable.zellij
 
       gcc
+      go
+      gnumake
 
       spotify
       tmate
       obs-studio
+      google-chrome
 
       calcure
       inkscape
       libreoffice-qt
       steghide
 
-      xournalpp
       nb
       (aspellWithDicts (
         dicts: with dicts; [
@@ -62,12 +64,12 @@ in
     ];
 
     imports = [
-      ./desktop/sway.nix
-      ./desktop/hyprland.nix
-      ./desktop/waybar.nix
+      ./desktop/sway
+      ./desktop/hyprland
+      ./desktop/waybar
+      ./desktop/alacritty
       ./desktop/wofi.nix
       ./desktop/power-menu.nix
-      ./desktop/alacritty.nix
       ./desktop/bash.nix
 
       ./programs/git.nix

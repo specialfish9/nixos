@@ -1,5 +1,4 @@
 { config, pkgs, inputs, ... }:
-
 {
   imports =
     [ 
@@ -11,28 +10,27 @@
 
   # Bootloader.
   boot.loader = {
-	grub = {
-	    device = "nodev";
-	    enable = true;
-	    useOSProber = true;
-	    efiSupport = true;
-	  };
+       systemd-boot.enable = true;
+	# grub = {
+	#     device = "nodev";
+	#     enable = true;
+	#     useOSProber = true;
+	#     efiSupport = true;
+	#   };
   	efi.canTouchEfiVariables = true;
   };
-
 
   # Network
   networking.hostName = "edgar"; 
   networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
-
-
+  hardware.bluetooth = {
+  	enable = true;
+	disabledPlugins = ["input" "hog"];
+  };
 
   # Time & lang
   time.timeZone = "Europe/Rome";
-
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "it_IT.UTF-8";
     LC_IDENTIFICATION = "it_IT.UTF-8";
@@ -47,13 +45,15 @@
 
   # GNOME
 
-  services.xserver = {
-  		enable = true;
-		displayManager.gdm.enable = true;
-		desktopManager.gnome.enable = true;
-  };
+ services.xserver = {
+ 	enable = true;
+ 	desktopManager.gnome.enable = true;
+ 	displayManager.gdm.enable = true;
+ };
 
-  services.displayManager.sessionPackages = [pkgs.sway];
+  services.displayManager = {
+  		sessionPackages = [pkgs.sway];
+  };
 
   xdg.portal.enable = true;
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -123,17 +123,19 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   	alacritty
-	pkgs.nerdfonts
-	pulseaudio
 	brightnessctl
-	neovim
 	git
-	wl-clipboard
-	unzip
-	python3
 	htop
 	killall
+	neovim
+	nerdfonts
+	python3
+	pulseaudio
 	wireguard-tools
+	wl-clipboard
+	unzip
+
+	xournalpp
   ];
 
   fonts.packages = with pkgs; [
@@ -141,24 +143,17 @@
      fira-code-symbols
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  security.polkit.enable = true;
 
-  # List services that you want to enable:
+  programs.steam = {
+	enable = true;
+  };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  virtualisation.docker.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+  	allowedUDPPorts = [ 51820 ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -167,48 +162,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
-  security.polkit.enable = true;
-
-  programs.steam = {
-	enable = true;
-  };
-
-
-  virtualisation.docker.enable = true;
-
-
-  networking.firewall = {
-  	allowedUDPPorts = [ 51820 ];
-  };
-
-  #   networking.wireguard.interfaces = {
-  #   wg0 = {
-  #     ips = [ "192.168.0.202/24" ];
-  #     listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
-  #
-  #     privateKey = "OEOEyvvZs9TyudfhdP3mfhoH+PhxuPy1qhlYmyf9JGA=";
-  #
-  #     peers = [
-  #       # For a client configuration, one peer entry for the server will suffice.
-  #
-  #       {
-  #         # Public key of the server (not a file path).
-  #         publicKey = "NhbrFjdgPWtOFYR5jRbfeR4sZHEXur+8LVHYWHbgmTg=";
-  #
-  #         # Forward all the traffic via VPN.
-  #         allowedIPs = [ "192.168.0.0/24" "0.0.0.0/0" ];
-  #         # Or forward only particular subnets
-  #         #allowedIPs = [ "10.100.0.1" "91.108.12.0/22" ];
-  #
-  #         # Set this to the server IP and port.
-  #         endpoint = "bfb5k8v1ihc82y1a.myfritz.net:56008"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
-  #
-  #         # Send keepalives every 25 seconds. Important to keep NAT tables alive.
-  #         persistentKeepalive = 25;
-  #       }
-  #     ];
-  #   };
-  # };
-
 }
